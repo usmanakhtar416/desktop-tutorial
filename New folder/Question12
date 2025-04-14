@@ -1,0 +1,83 @@
+class Bird:
+
+    feathers = True  
+    lay_eggs = True  
+
+    def __init__(self, name, color):
+        self.name = name 
+        self.color = color  
+
+    def display_info(self):
+
+        print(f"Name: {self.name}, Color: {self.color}")
+
+    @classmethod
+    def bird_characteristics(cls):
+
+        print(f"Feathers: {cls.feathers}, Lay Eggs: {cls.lay_eggs}")
+
+    @staticmethod
+    def bird_fact():
+
+        print("Fun Fact: Birds are descendants of dinosaurs!")
+
+class FlyingBird(Bird):
+    def __init__(self, name, color, wing_span):
+        super().__init__(name, color)
+        self.wing_span = wing_span  # Instance variable
+
+    def flying_bird_info(self):
+        print(f"{self.name} can fly with a wing span of {self.wing_span} meters.")
+
+
+class NonFlyingBird(Bird):
+    def __init__(self, name, color, weight):
+        super().__init__(name, color)
+        self.weight = weight  
+
+    def non_flying_bird_info(self):
+        print(f"{self.name} cannot fly and weighs {self.weight} kg.")
+
+
+class Robin(FlyingBird):
+    def sing(self):
+        print(f"{self.name} is singing a melodious tune!")
+
+class Swallow(FlyingBird):
+    def migration_info(self):
+        print(f"{self.name} migrates long distances across continents.")
+
+
+class Penguin(NonFlyingBird):
+    def swim(self):
+        print(f"{self.name} loves swimming in cold waters!")
+
+class Kiwi(NonFlyingBird):
+    def nocturnal_behavior(self):
+        print(f"{self.name} is a nocturnal bird that hunts at night.")
+
+print("\n--- General Bird Characteristics ---")
+Bird.bird_characteristics()
+Bird.bird_fact()
+
+print("\n--- Flying Birds ---")
+robin = Robin("Robin", "Red", 0.5)
+robin.display_info()
+robin.flying_bird_info()
+robin.sing()
+
+swallow = Swallow("Swallow", "Blue", 0.7)
+swallow.display_info()
+swallow.flying_bird_info()
+swallow.migration_info()
+
+print("\n--- Non-Flying Birds ---")
+penguin = Penguin("Penguin", "Black and White", 30)
+penguin.display_info()
+penguin.non_flying_bird_info()
+penguin.swim()
+
+kiwi = Kiwi("Kiwi", "Brown", 5)
+kiwi.display_info()
+kiwi.non_flying_bird_info()
+kiwi.nocturnal_behavior()

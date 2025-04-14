@@ -1,0 +1,76 @@
+class Restaurant:
+    def __init__(self):
+        self.menu_items = {}  # Dictionary to store menu items (item: price)
+        self.booked_tables = []  # List to store reserved table numbers
+        self.customer_orders = []  # List to store customer orders (dictionaries)
+
+    def add_item_to_menu(self, item_name, item_price):
+        """Add an item to the menu with a specified price."""
+        self.menu_items[item_name] = item_price
+        print(f"{item_name} has been added to the menu for ${item_price}.")
+
+    def book_table(self, table_number):
+        """Reserve a table if it's not already reserved."""
+        if table_number in self.booked_tables:
+            print(f"Table {table_number} is already booked!")
+        else:
+            self.booked_tables.append(table_number)
+            print(f"Table {table_number} has been successfully reserved.")
+
+    def customer_order(self, customer_name, order_items):
+        """Take a customer's order and store it."""
+        for item in order_items:
+            if item not in self.menu_items:
+                print(f"Sorry, {item} is not available on the menu.")
+                return
+        order = {"customer_name": customer_name, "order_items": order_items}
+        self.customer_orders.append(order)
+        print(f"Order for {customer_name} has been placed successfully!")
+
+    def print_menu(self):
+        """Print all menu items and their prices."""
+        print("\nMenu:")
+        for item, price in self.menu_items.items():
+            print(f"{item}: ${price}")
+
+    def print_table_reservations(self):
+        """Print the list of reserved tables."""
+        print("\nTable Reservations:")
+        if not self.booked_tables:
+            print("No tables have been reserved yet.")
+        else:
+            print(", ".join(map(str, self.booked_tables)))
+
+    def print_customer_orders(self):
+        """Print all customer orders."""
+        print("\nCustomer Orders:")
+        if not self.customer_orders:
+            print("No orders have been placed yet.")
+        else:
+            for order in self.customer_orders:
+                print(f"{order['customer_name']} ordered {', '.join(order['order_items'])}.")
+
+
+restaurant = Restaurant()
+
+restaurant.add_item_to_menu("Pizza", 10)
+restaurant.add_item_to_menu("Burger", 5)
+restaurant.add_item_to_menu("Pasta", 8)
+
+
+restaurant.print_menu()
+
+restaurant.book_table(1)
+restaurant.book_table(2)
+restaurant.book_table(1)  
+
+restaurant.print_table_reservations()
+
+
+
+restaurant.customer_order("John", ["Pizza", "Pasta"])
+restaurant.customer_order("Alice", ["Burger"])
+restaurant.customer_order("Tom", ["Steak"])  
+
+
+restaurant.print_customer_orders()

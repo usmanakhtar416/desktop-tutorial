@@ -1,0 +1,48 @@
+
+
+
+print("----------------------------------------")
+
+
+class CustomerData:
+    def __init__(self, record_id, first_name, last_name, email, phone_number, contact_owner,
+                 primary_associated_company_id, last_activity_date, lead_status,
+                 marketing_contact_status, create_date, associated_company):
+        self.record_id = record_id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.phone_number = phone_number
+        self.contact_owner = contact_owner
+        self.primary_associated_company_id = primary_associated_company_id
+        self.last_activity_date = last_activity_date
+        self.lead_status = lead_status
+        self.marketing_contact_status = marketing_contact_status
+        self.create_date = create_date
+        self.associated_company = associated_company
+
+    def display_info(self):
+        return f"Customer: {self.first_name} {self.last_name}, Email: {self.email}, Phone: {self.phone_number}"
+
+
+customer1 = CustomerData(1, "Usman", "Ahmed", "usman@example.com", "1234567890", "Ali",
+                         "101", "2025-04-13", "New Lead", "Subscribed", "2025-01-01", "XYZ Ltd")
+
+customer2 = CustomerData(2, "Sara", "Khan", "sara@example.com", "0987654321", "Zaid",
+                         "102", "2025-04-10", "Follow-up", "Unsubscribed", "2025-01-15", "ABC Pvt")
+
+customer3 = CustomerData(3, "Ahmed", "Raza", "ahmed@example.com", "1112223334", "Farhan",
+                         "103", "2025-04-11", "Converted", "Subscribed", "2025-02-01", "LMN Corp")
+
+customer4 = CustomerData(4, "Fatima", "Ali", "fatima@example.com", "4445556667", "Hassan",
+                         "104", "2025-04-12", "Pending", "Unsubscribed", "2025-02-20", "DEF Inc")
+
+customer5 = CustomerData(5, "Bilal", "Hussain", "bilal@example.com", "7778889990", "Noman",
+                         "105", "2025-04-13", "Lost", "Subscribed", "2025-03-05", "GHI Ltd")
+
+
+print(customer1.display_info())
+print(customer2.display_info())
+print(customer3.display_info())
+print(customer4.display_info())
+print(customer5.display_info())

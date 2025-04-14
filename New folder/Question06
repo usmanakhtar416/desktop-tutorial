@@ -1,0 +1,39 @@
+class Queue:
+    def __init__(self):
+        self.items = []  
+
+    def enqueue(self, item):
+        """Add an item to the end of the queue."""
+        self.items.append(item)
+        print(f"{item} has been added to the queue.")
+
+    def dequeue(self):
+        """Remove and return the item from the front of the queue."""
+        if self.is_empty():
+            return "Error! The queue is empty."
+        return self.items.pop(0)
+
+    def is_empty(self):
+        """Check if the queue is empty."""
+        return len(self.items) == 0
+
+    def peek(self):
+        """View the item at the front of the queue without removing it."""
+        if self.is_empty():
+            return "Error! The queue is empty."
+        return self.items[0]
+
+    def size(self):
+        """Return the number of items in the queue."""
+        return len(self.items)
+
+
+queue = Queue()
+queue.enqueue(10)
+queue.enqueue(20)
+queue.enqueue(30)
+
+print("First in the queue:", queue.peek())
+print("Dequeued:", queue.dequeue())
+print("First in the queue after dequeueing:", queue.peek())
+print("Queue size:", queue.size())

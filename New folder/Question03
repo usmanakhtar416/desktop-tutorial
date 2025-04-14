@@ -1,0 +1,32 @@
+class ICalculator:
+    def add(self, a, b):
+        pass
+
+    def subtract(self, a, b):
+        pass
+
+    def multiply(self, a, b):
+        pass
+
+    def divide(self, a, b):
+        pass
+
+class Calculator(ICalculator):
+    def add(self, a, b):
+        return a + b
+
+    def subtract(self, a, b):
+        return a - b
+
+    def multiply(self, a, b):
+        return a * b
+
+    def divide(self, a, b):
+        return a / b if b != 0 else "Cannot divide by zero"
+
+
+calc = Calculator()
+print(calc.add(5, 3))        
+print(calc.subtract(5, 3))   
+print(calc.multiply(5, 3))   
+print(calc.divide(5, 0))     
