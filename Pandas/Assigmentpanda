@@ -1,0 +1,312 @@
+import pandas as pd
+print()
+print(pd.__version__)
+
+print("===================================================")
+
+import pandas as pd
+
+US_data = pd.read_csv("Real_Estate_Sales_2001-2022_GL-Short.csv", delimiter=',', index_col='Serial Number')
+
+print(US_data)
+
+
+print("\n---------2-----------\n")
+
+print("US_Data .info :",US_data.info)
+
+print("============")
+
+print("US-data .dtype :",US_data.dtypes)
+
+print("============")
+
+print("US_data .describe :",US_data.describe)
+
+print("============")
+
+print("US_data .describe :",US_data.shape)
+
+print("\n-------3------------\n")
+
+#3.  Use , DataFrame method -  .to_string() 
+
+
+US_1 = pd.DataFrame({
+    'Name ': ['Ali', 'hamza', 'Arslan', 'Usman', 'Qasim', 'Noor', 'Ali', 'hamza', 'Arslan', 'Usman', 'Qasim', 'Noor'],
+    'Age': [17, 20, 18, 21, 23, 25, 19, 30, 16, 25, 22, 24],
+    'DOB': [2003, 1997, 1999, 2001, 2000, 2002, 2004, 1998, 1995, 2001, 2003, 2002]
+})
+
+print(US_1.to_string(index=False))
+
+
+
+print("\n-------4------------\n")
+
+# 4. On given DataFrame – select top 7 rows, and print 
+
+
+US_2 =US_1.head(7)
+print(US_1)
+
+
+print("\n-------5------------\n")
+
+
+# 5. On given DataFrame – select bottom 9 rows, and print 
+
+US_3 = US_1.tail(9)
+print(US_3)
+
+
+print("\n-------6------------\n")
+
+
+# 6. On Given DataFrame – access the Name column for “Town” and print whole column 
+# Then next, access the name column for “Residential Type” and print whole column
+
+
+town = US_data['Town']
+residential = US_data['Residential Type']
+
+
+
+print('US_data All Towns :', town)
+
+print('=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-')
+
+print('US_data Residential :', residential)
+
+
+print("\n---------7-----------\n")
+
+
+# On Given DataFrame – access access multiple columns like “Town” and “Date Recorded” 
+
+town_datarecord =US_data[['Town','Date Recorded']]
+
+print(town_datarecord)
+
+print("\n-------8------------\n")
+
+# 8. Selecting a single row using .loc 
+# With index – “Serial Number” value “200008” , print the returned row and analyze results.
+
+
+Single_row=US_data.loc[200008]
+print(Single_row)
+
+
+print("\n-------9------------\n")
+
+
+# 9. Selecting multiple rows using .loc 
+# With index – “Serial Number” value “200305” and “200207”,”20000048”  , print the returned 
+# rows and analyze results.
+
+Multi_Row = US_data.loc[[200305,200207,20000048]]
+print (Multi_Row)
+
+
+print("\n-------10------------\n")
+
+
+#  Selecting a slice of rows using .loc 
+# With index – “Serial Number” value range of “2020090” and “200121” , print the returned row 
+# and analyze results.
+
+Slice = US_data.loc[2020090:200121]
+print(Slice)
+
+
+
+print("\n---------11------------\n")
+
+# 11. Conditional selection of rows using .loc 
+# “Sale Amount” greater then “202500” 
+# , print the returned row and analyze results. 
+
+
+greater=US_data.loc[US_data['Sale Amount']>202500]
+print(greater)
+
+
+print("\n---------12------------\n")
+# 12. Conditional selection of rows using .loc 
+# “Town” equal to “Ansonia” 
+# , print the returned row and analyze results.
+
+
+
+equal =US_data.loc[US_data['Town']=='Ansonia']
+print('“Town” equal to “Ansonia” ',equal)
+
+
+print("\n---------13------------\n")
+
+# 13. Conditional selection of rows using .loc 
+# “Residential Type” equal to “Condo” and “Assessed Value” is equal to - less then 180500 
+# , print the returned row and analyze results.
+
+Equal_less= US_data.loc[(US_data['Residential Type'] =='Condo')&(US_data['Assessed Value']<=180500)]
+print('“Residential Type” equal to “Condo” and “Assessed Value” is equal to - less then 180500 :' ,Equal_less)
+
+print("\n-------14---------\n")
+
+#TASK14:. Selecting multiple columns using .locWith index – “Serial Number” value “201354
+multiple_columns = US_data.loc[:, ["Address", "Assessed Value", "Sale Amount", "Sales Ratio", "Property Type"]]
+print(multiple_columns)
+
+print("\n-------15---------\n")
+
+
+#15. Selecting a slice of columns using .loc from “Date Recorded” to “Sale Amount”
+slice_col = US_data.loc[:,"Date Recorded":"Sale Amount"]
+print(slice_col)
+
+print("\n-------16---------\n")
+
+#16Combined row and column selection using .loc.Residential Type” equal to “Condo” and Columns th “Date Recorded” to “Assessed Value”
+row_col=US_data.loc[US_data["Residential Type"]=="Condo","Date Recorded":"Assessed Value"]
+print(row_col)
+
+
+print("\n-------17---------\n")
+
+#17. Selecting a single row using .iloc :Select 5th row
+single_row =US_data.iloc[[4]]
+print(single_row)
+
+
+print("\n-------18---------\n")
+
+#18. Selecting multiple rows using .iloc:Select – 7th row, 9th row and 15th row
+multiple_row = US_data.iloc[[6,8,14]]
+print(multiple_row)
+
+print("\n-------19---------\n")
+
+#19. Selecting a slice of rows using .iloc:Select from 5th to 13th row
+slice_row = US_data.iloc[4:13]
+print(slice_row)
+
+print("\n-------20---------\n")
+
+#20. Selecting a single column using .iloc:Select 3rd column, print the returned
+single_column = US_data.iloc[:,2]
+print(single_column)
+
+
+print("\n-------21---------\n")
+#21:. Selecting multiple columns using .iloc:Select 2nd column, 4th column, 7th columns
+ml_col = US_data.iloc[:,[1,3,7]]
+print(ml_col)
+
+print("\n-------22---------\n")
+#22. Selecting a slice of columns using .iloc:Range: Select from 2nd column to 5th columns
+sl_col= US_data.iloc[:,1:6]
+print(sl_col)
+
+print("\n-------23---------\n")
+#23. Combined row and column selection using .iloc:Select 7throw, 9th row and 15th rowSelect 2nd column, 4th column
+r_c = US_data.iloc[[6,8,14],[1,3]]
+print(r_c)
+
+print("\n-------24---------\n")
+#24. Combined row and column selection using .iloc:Select range:2nd row,6th rowSelect range:2nd column to 4th column
+r_c = US_data.iloc[1:6,1:4]
+print(r_c)
+
+print("\n-------25---------\n")
+#25 Add a New  Row 
+new_row = {
+    'Serial Number': 9999999,
+    'List Year': 2025,
+    'Date Recorded': '04/23/2025',
+    'Town': 'SampleTown',
+    'Address': '123 SAMPLE ST',
+    'Assessed Value': 150000.0,
+    'Sale Amount': 300000.0,
+    'Sales Ratio': 0.5,
+    'Property Type': 'Residential',
+    'Residential Type': 'Single Family',
+    'Non Use Code': None,
+    'Assessor Remarks': 'New Entry',
+    'OPM remarks': 'Test Record',
+    'Location': 'POINT (-72.00000 42.00000)'
+}
+
+df = pd.concat([US_data, pd.DataFrame([new_row])], ignore_index=True)
+print(df.tail())
+
+print("\n-------26---------\n")
+
+#26. delete row with index 2
+del_row = US_data.drop(US_data.index[2])
+print(del_row)
+
+print("\n-------27---------\n")
+
+#27. delete row with index from 4 to 7th row
+de_row= US_data.drop(US_data.index[4:7])
+print(de_row)
+
+print("\n-------28---------\n")
+
+#28. Delete “Residential Type” column
+del_res = US_data.drop(columns=["Residential Type"])
+print(del_res)
+
+print("\n-------29---------\n")
+
+#29. Delete “Assessor Remarks” and “Location” columns
+de = US_data.drop(columns=["Assessor Remarks","Location"])
+print(de)
+
+
+print("\n-------30---------\n")
+
+#30. Rename column “List Year: to “List_Year_Changed”
+rename = US_data.rename(columns={"List Year":"List_year_changed"})
+print(rename)
+
+
+print("\n-------31---------\n")
+
+#31.Rename label from “200400” to “20040333”
+lab_ren = US_data.rename(index={200400:20040333})
+print(lab_ren)
+
+print("\n------32------------\n")
+#32. query() to Select Data
+
+qr = US_data.query("`Assessed Value` < 127400 and `Property Type` == 'Commercial' and `Residential Type` != 'Single Family'")
+
+print(qr)
+
+print("\n---------33----------\n")
+
+#33. sort DataFrame by price in ascending order column “Assessed Value”
+sor = US_data.sort_values(by="Assessed Value",ascending=True)
+print(sor)
+
+print("\n---------34----------\n")
+#34. “group the DataFrame by the “Property Type” column and calculate the sum of “Sale Amount”for each category
+gr_df = US_data.groupby("Property Type")["Sale Amount"].sum()
+print(gr_df)
+
+
+print("\n---------35----------\n")
+#35. use dropna() to remove rows with any missing values
+cl_dt = US_data.dropna()
+print(cl_dt)
+
+
+print("\n---------36----------\n")
+#36. filling NaN values with 0
+fl_dt = US_data.fillna(0)
+print(fl_dt)
+
+print("\n-----END--------\n")
+
