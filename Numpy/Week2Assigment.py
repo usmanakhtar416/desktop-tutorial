@@ -128,7 +128,6 @@ print(sliced_data)
 print ("====================")
 #12
 
-
 # 2D array using the assessed values
 assessed_values_2D = np.column_stack((Assessed_Value, Assessed_Value))
 
