@@ -125,9 +125,6 @@ sliced_data = data_2D[1:8, 2:5]
 
 print(sliced_data)
 
-
-
-
 print ("====================")
 #12
 
